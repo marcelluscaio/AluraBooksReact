@@ -1,4 +1,5 @@
 import Logo from './componentes/Logo';
+import Pesquisa from './componentes/Pesquisa';
 import perfil from './imagens/perfil.svg';
 import sacola from './imagens/sacola.svg';
 import styled from 'styled-components';
@@ -57,6 +58,7 @@ function App() {
             )}
           </ul>
       </header>
+      <Pesquisa />
     </AppContainer>
   );
 }

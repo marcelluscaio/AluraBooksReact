@@ -1,8 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { createGlobalStyle } from 'styled-components';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { createGlobalStyle } from "styled-components";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -20,12 +21,19 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const router = createBrowserRouter([
+	{
+		path: "/",
+		element: <App />,
+	},
+]);
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <GlobalStyle/>
-    <App />
-  </React.StrictMode>
+	<React.StrictMode>
+		<GlobalStyle />
+		<RouterProvider router={router} />
+	</React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

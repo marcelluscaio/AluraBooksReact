@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
+import Root from "./routes/root";
 import reportWebVitals from "./reportWebVitals";
 import { createGlobalStyle } from "styled-components";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -23,8 +24,14 @@ const GlobalStyle = createGlobalStyle`
 
 const router = createBrowserRouter([
 	{
-		path: "/",
-		element: <App />,
+		path: "*",
+		element: <Root />,
+		children: [
+			{
+				path: "/",
+				element: <App />,
+			},
+		],
 	},
 ]);
 
@@ -32,6 +39,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	<React.StrictMode>
 		<GlobalStyle />
+		{/* <Header /> */}
 		<RouterProvider router={router} />
 	</React.StrictMode>
 );

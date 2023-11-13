@@ -24,7 +24,7 @@ const GlobalStyle = createGlobalStyle`
 
 const router = createBrowserRouter([
 	{
-		path: "*",
+		path: "/",
 		element: <Root />,
 		children: [
 			{

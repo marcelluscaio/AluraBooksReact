@@ -2,9 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import Root from "./routes/root";
+import Header from "./componentes/Header";
 import reportWebVitals from "./reportWebVitals";
 import { createGlobalStyle } from "styled-components";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -22,7 +23,7 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const router = createBrowserRouter([
+/* const router = createBrowserRouter([
 	{
 		path: "/",
 		element: <Root />,
@@ -33,14 +34,16 @@ const router = createBrowserRouter([
 			},
 		],
 	},
-]);
+]); */
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	<React.StrictMode>
-		<GlobalStyle />
-		{/* <Header /> */}
-		<RouterProvider router={router} />
+		<BrowserRouter>
+			<GlobalStyle />
+			<Header />
+			<App />
+		</BrowserRouter>
 	</React.StrictMode>
 );
 

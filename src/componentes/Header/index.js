@@ -2,7 +2,7 @@ import Logo from "../Logo";
 
 import perfil from "../../imagens/perfil.svg";
 import sacola from "../../imagens/sacola.svg";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 import styled from "styled-components";
 
@@ -38,40 +38,43 @@ const StyledHeader = styled.header`
 
 function Header() {
 	return (
-		<StyledHeader>
-			<Logo></Logo>
-			<ul className={"app__lista"}>
-				{opcoesMenu.map((opcao, indice) => {
-					return (
-						<Link to={`/${opcao.toLowerCase().split(" ").join("")}`}>
+		<>
+			<StyledHeader>
+				<Logo></Logo>
+				<ul className={"app__lista"}>
+					{opcoesMenu.map((opcao, indice) => {
+						return (
+							<Link to={`/${opcao.toLowerCase().split(" ").join("")}`}>
+								<li
+									className={"lista__item"}
+									key={indice}
+								>
+									{opcao}
+								</li>
+							</Link>
+						);
+					})}
+				</ul>
+
+				<ul className={"app__icones"}>
+					{icones.map((icone, indice) => {
+						return (
 							<li
-								className={"lista__item"}
+								className={"icones__item"}
 								key={indice}
 							>
-								{opcao}
+								<img
+									className={"item__imagem"}
+									src={icone}
+									alt={"icone"}
+								></img>
 							</li>
-						</Link>
-					);
-				})}
-			</ul>
-
-			<ul className={"app__icones"}>
-				{icones.map((icone, indice) => {
-					return (
-						<li
-							className={"icones__item"}
-							key={indice}
-						>
-							<img
-								className={"item__imagem"}
-								src={icone}
-								alt={"icone"}
-							></img>
-						</li>
-					);
-				})}
-			</ul>
-		</StyledHeader>
+						);
+					})}
+				</ul>
+			</StyledHeader>
+			<Outlet />
+		</>
 	);
 }
 

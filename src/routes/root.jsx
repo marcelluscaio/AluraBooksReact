@@ -1,13 +1,26 @@
-import { Outlet } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import App from "../pages/App";
 import Header from "../componentes/Header";
+import Categorias from "../pages/Categorias";
 
-function Root() {
+function Router() {
 	return (
-		<>
-			<Header />
-			<Outlet />
-		</>
+		<Routes>
+			<Route
+				path="/"
+				element={<Header />}
+			>
+				<Route
+					path="/"
+					element={<App />}
+				/>
+				<Route
+					path="categorias"
+					element={<Categorias />}
+				/>
+			</Route>
+		</Routes>
 	);
 }
 
-export default Root;
+export default Router;
